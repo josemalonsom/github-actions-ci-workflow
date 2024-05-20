@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/upload-artifact@main
+      - uses: actions/download-artifact@main
         with:
           name: "The File"
           path: ${{ inputs.file_name }}
