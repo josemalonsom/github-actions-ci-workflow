@@ -20,7 +20,7 @@ jobs:
       - uses: actions/upload-artifact@main
         with:
           name: "The File"
-          path: ${{ inputs.file_name }}
+          path: ./${{ inputs.file_name }}
 
   
   download_file_and_show_content:
@@ -31,7 +31,7 @@ jobs:
       - uses: actions/download-artifact@main
         with:
           name: "The File"
-          path: ${{ inputs.file_name }}
+          path: ./${{ inputs.file_name }}
       - name: Show Current Directory Content
         run: find .
       - name: Show File Content
