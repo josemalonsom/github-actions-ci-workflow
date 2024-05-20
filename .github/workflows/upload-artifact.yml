@@ -32,5 +32,7 @@ jobs:
         with:
           name: "The File"
           path: ${{ inputs.file_name }}
+      - name: Show Current Directory Content
+        run: find .
       - name: Show File Content
         run: cat ${{ inputs.file_name }}
