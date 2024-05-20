@@ -1,0 +1,36 @@
+name: Artifact Upload/Download example
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_name:
+        description: File Name
+        required: true
+        default: foo.txt
+        type: string
+jobs:
+
+  create_and_upload_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create File ${{ inputs.file_name }}
+        run: echo "File Content" > ${{ inputs.file_name }}
+  
+      - uses: actions/upload-artifact@main
+        with:
+          name: "The File"
+          path: ${{ inputs.file_name }}
+
+  
+  download_file_and_show_content:
+    needs: create_and_upload_file
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/upload-artifact@main
+        with:
+          name: "The File"
+          path: .
+      
+    
